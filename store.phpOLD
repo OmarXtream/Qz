@@ -1,0 +1,415 @@
+<?php
+ob_start();
+require 'config/phphead.php';
+require_once('includes/header.php');
+require_once('includes/topbar.php');
+require_once('includes/sidebar.php');
+$host = "127.0.0.1";
+$user = "root";
+$pass = "qvaGN6vy9EaZMw5l";
+$db = "test";
+$con = new mysqli($host, $user, $pass, $db);
+if($con->connect_error){
+	die("Database Error: ".$con->connect_error);
+}
+require 'storezsadwasdewd/start.php';
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+if(isset($_POST["vbronze"])){
+	
+	$itemx = "VIP BRONZE";
+	$price = 2;
+	
+	$payer = new \PayPal\Api\Payer();
+	$payer->setPaymentMethod('paypal');
+	$item = new \PayPal\Api\Item();
+	$item->setName($itemx)->setCurrency('USD')->setQuantity(1)->setPrice($price);
+	$itemList = new \PayPal\Api\ItemList();
+	$itemList->setItems([$item]);
+	$amount = new \PayPal\Api\Amount();
+	$amount->setTotal($price);
+	$amount->setCurrency('USD');
+	$transaction = new \PayPal\Api\Transaction();
+	$transaction->setAmount($amount)->setItemList($itemList)->setDescription("1 Month - VIP BRONZE")->setInvoiceNumber(uniqid());
+	$redirectUrls = new \PayPal\Api\RedirectUrls();
+	$redirectUrls->setReturnUrl("https://panel.q-z.us/pay?success=true")
+		->setCancelUrl("https://panel.q-z.us/pay?success=false");
+	$payment = new \PayPal\Api\Payment();
+	$payment->setIntent('sale')
+		->setPayer($payer)
+		->setTransactions(array($transaction))
+		->setRedirectUrls($redirectUrls);
+	try {
+		$payment->create($apiContext);
+	}catch(Exception $e){
+		die($e);
+	}
+	
+	$payid = strval($payment->getId());
+	$rank = 40;
+	$buytime = time();
+	$sql = "INSERT INTO store (id,payment,buyer,rank,buytime,ip,status) VALUES (NULL, '$payid','$dbid','$rank','$buytime','$x','0');";
+	if(!$con->query($sql) === true){
+					die('<script>
+           swal({title: "خطاء",text: "فشل عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	// die("<br/><br/><br/><br/><br/><br/><br/><center> <h1> Payment Id: ".$payment->getId()." </h1> </center><br/><br/><br/><br/><br/><br/><br/>");
+	$approvalurl = $payment->getApprovalLink();
+	exit(header("Location: $approvalurl"));
+}else if(isset($_POST["vsliver"])){
+	
+	$itemx = "VIP SILVER";
+	$price = 5;
+	
+	$payer = new \PayPal\Api\Payer();
+	$payer->setPaymentMethod('paypal');
+	$item = new \PayPal\Api\Item();
+	$item->setName($itemx)->setCurrency('USD')->setQuantity(1)->setPrice($price);
+	$itemList = new \PayPal\Api\ItemList();
+	$itemList->setItems([$item]);
+	$amount = new \PayPal\Api\Amount();
+	$amount->setTotal($price);
+	$amount->setCurrency('USD');
+	$transaction = new \PayPal\Api\Transaction();
+	$transaction->setAmount($amount)->setItemList($itemList)->setDescription("1 Month - VIP SILVER")->setInvoiceNumber(uniqid());
+	$redirectUrls = new \PayPal\Api\RedirectUrls();
+	$redirectUrls->setReturnUrl("https://panel.q-z.us/pay?success=true")
+		->setCancelUrl("https://panel.q-z.us/pay?success=false");
+	$payment = new \PayPal\Api\Payment();
+	$payment->setIntent('sale')
+		->setPayer($payer)
+		->setTransactions(array($transaction))
+		->setRedirectUrls($redirectUrls);
+	try {
+		$payment->create($apiContext);
+	}catch(Exception $e){
+			die('<script>
+           swal({title: "خطاء",text: "فشل عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	$payid = strval($payment->getId());
+	$rank = 39;
+	$buytime = time();
+	$sql = "INSERT INTO store (id,payment,buyer,rank,buytime,ip,status) VALUES (NULL, '$payid','$dbid','$rank','$buytime','$x','0');";
+	if(!$con->query($sql) === true){
+			die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	
+	$approvalurl = $payment->getApprovalLink();
+	exit(header("Location: $approvalurl"));
+}else if(isset($_POST["vgold"])){
+	
+	$itemx = "VIP GOLD";
+	$price = 8;
+	
+	$payer = new \PayPal\Api\Payer();
+	$payer->setPaymentMethod('paypal');
+	$item = new \PayPal\Api\Item();
+	$item->setName($itemx)->setCurrency('USD')->setQuantity(1)->setPrice($price);
+	$itemList = new \PayPal\Api\ItemList();
+	$itemList->setItems([$item]);
+	$amount = new \PayPal\Api\Amount();
+	$amount->setTotal($price);
+	$amount->setCurrency('USD');
+	$transaction = new \PayPal\Api\Transaction();
+	$transaction->setAmount($amount)->setItemList($itemList)->setDescription("1 Month - VIP GOLD")->setInvoiceNumber(uniqid());
+	$redirectUrls = new \PayPal\Api\RedirectUrls();
+	$redirectUrls->setReturnUrl("https://panel.q-z.us/pay?success=true")
+		->setCancelUrl("https://panel.q-z.us/pay?success=false");
+	$payment = new \PayPal\Api\Payment();
+	$payment->setIntent('sale')
+		->setPayer($payer)
+		->setTransactions(array($transaction))
+		->setRedirectUrls($redirectUrls);
+	try {
+		$payment->create($apiContext);
+	}catch(Exception $e){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+		   }
+	$payid = strval($payment->getId());
+	$rank = 38;
+	$buytime = time();
+	$sql = "INSERT INTO store (id,payment,buyer,rank,buytime,ip,status) VALUES (NULL, '$payid','$dbid','$rank','$buytime','$x','0');";
+	if(!$con->query($sql) === true){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	
+	$approvalurl = $payment->getApprovalLink();
+	exit(header("Location: $approvalurl"));
+}else if(isset($_POST["vcoin"])){
+	
+	$itemx = "Coins";
+	$price = 4;
+	
+	$payer = new \PayPal\Api\Payer();
+	$payer->setPaymentMethod('paypal');
+	$item = new \PayPal\Api\Item();
+	$item->setName($itemx)->setCurrency('USD')->setQuantity(1)->setPrice($price);
+	$itemList = new \PayPal\Api\ItemList();
+	$itemList->setItems([$item]);
+	$amount = new \PayPal\Api\Amount();
+	$amount->setTotal($price);
+	$amount->setCurrency('USD');
+	$transaction = new \PayPal\Api\Transaction();
+	$transaction->setAmount($amount)->setItemList($itemList)->setDescription("1000 Coins")->setInvoiceNumber(uniqid());
+	$redirectUrls = new \PayPal\Api\RedirectUrls();
+	$redirectUrls->setReturnUrl("https://panel.q-z.us/pay?success=true")
+		->setCancelUrl("https://panel.q-z.us/pay?success=false");
+	$payment = new \PayPal\Api\Payment();
+	$payment->setIntent('sale')
+		->setPayer($payer)
+		->setTransactions(array($transaction))
+		->setRedirectUrls($redirectUrls);
+	try {
+		$payment->create($apiContext);
+	}catch(Exception $e){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	
+	$payid = strval($payment->getId());
+	$rank = -1;
+	$buytime = time();
+	$sql = "INSERT INTO store (id,payment,buyer,rank,buytime,ip,status) VALUES (NULL, '$payid','$dbid','$rank','$buytime','$x','0');";
+	if(!$con->query($sql) === true){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	$approvalurl = $payment->getApprovalLink();
+	exit(header("Location: $approvalurl"));
+}else if(isset($_POST["vprime"])){
+	
+	$itemx = "VIP PRIME";
+	$price = 20;
+	
+	$payer = new \PayPal\Api\Payer();
+	$payer->setPaymentMethod('paypal');
+	$item = new \PayPal\Api\Item();
+	$item->setName($itemx)->setCurrency('USD')->setQuantity(1)->setPrice($price);
+	$itemList = new \PayPal\Api\ItemList();
+	$itemList->setItems([$item]);
+	$amount = new \PayPal\Api\Amount();
+	$amount->setTotal($price);
+	$amount->setCurrency('USD');
+	$transaction = new \PayPal\Api\Transaction();
+	$transaction->setAmount($amount)->setItemList($itemList)->setDescription("LifeTime - VIP PRIME")->setInvoiceNumber(uniqid());
+	$redirectUrls = new \PayPal\Api\RedirectUrls();
+	$redirectUrls->setReturnUrl("https://panel.q-z.us/pay?success=true")
+		->setCancelUrl("https://panel.q-z.us/pay?success=false");
+	$payment = new \PayPal\Api\Payment();
+	$payment->setIntent('sale')
+		->setPayer($payer)
+		->setTransactions(array($transaction))
+		->setRedirectUrls($redirectUrls);
+	try {
+		$payment->create($apiContext);
+	}catch(Exception $e){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	
+	$payid = strval($payment->getId());
+	$rank = 2386;
+	$buytime = time();
+	$sql = "INSERT INTO store (id,payment,buyer,rank,buytime,ip,status) VALUES (NULL, '$payid','$dbid','$rank','$buytime','$x','0');";
+	if(!$con->query($sql) === true){
+die('<script>
+           swal({title: "خطاء",text: "تعذر عملية الشراء",type: "error",allowOutsideClick: false,allowEscapeKey: false,showCloseButton: false,confirmButtonText: "حسنأ",})</script>');
+	}
+	$approvalurl = $payment->getApprovalLink();
+	exit(header("Location: $approvalurl"));
+}
+ob_end_flush();
+?>
+<link href="dist/css/pages/user-card.css" rel="stylesheet">
+
+        <div class="page-wrapper">
+        <div class="container-fluid">
+		</br>
+		</br>
+		</br>
+	<!--	<center>
+<div class="alert alert-info">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                            <h3 class="text-info"><i class="fa fa-exclamation-circle"></i> ملاحظة مهمة جدأ .</h3> لتحويل البنكي برجاء التواصل مع نايف او محمود بالتيم سبيك او بالتلقرام 
+											<p> او قم بالتحويل علي هذا الحساب : 117608016666695  باسم نايف  و تواصل مع 
+											<br>
+											<p> نايف  :  https://t.me/MDLxD <p> محمود : https://t.me/Ma7mouDzz
+                                        </div>			</center> 
+
+											<center>
+<div class="alert alert-danger">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                            <h3 class="text-warning"><i class="fa fa-exclamation-circle"></i> خصم 50 % علي بعض الرتب بمناسبة البلاك فرايدي </h3> خصم علي رتب في اي بي قولد + في اي بي سيلفر + في اي بي برونز + الكوينز لمده 24 ساعة  
+											<p> 
+                                        </div>			</center> -->
+		
+			<div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row pricing-plan">
+                                    <div class="col-md-2 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box">
+                                            <div class="pricing-body b-l">
+                                                <div class="pricing-header">
+                                                    <h4 class="text-center">VIP BRONZE</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>1.99</h2>
+													<hr>
+                                                    <p class="uppercase">لمده شهر</p>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row"> ~ </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تخطي الاسبام + تشانل كومندر </div>
+                                                    <div class="price-row"> ~ </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تلك بور فوق الاعضاء </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row"><i class="icon-screen-smartphone"></i> المنطقه الملكيه فاللوحه</div>
+                                                    <div class="price-row"><i class="icon-drawar"></i> سبيسر + رومين</div>
+                                                    <div class="price-row"><i class="icon-refresh"></i> لا يتم أعفائك من قوانين السيرفر</div>
+                                                    <div class="price-row">
+                                                        <form method="post"> <button type="submit" name="vbronze" class="btn btn-success waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box b-l">
+                                            <div class="pricing-body">
+                                                <div class="pricing-header">
+                                                    <h4 class="text-center">VIP SILVER</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>4.99</h2>
+													<hr>
+                                                    <p class="uppercase"> لمده شهر </p>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row"><i class="icon-user"></i> تخطي الباس </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تخطي الاسبام + تشانل كومندر </div>
+                                                    <div class="price-row"> ~ </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تلك بور فوق الاعضاء </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row"><i class="icon-screen-smartphone"></i> لمنطقه الملكيه فاللوحه</div>
+                                                    <div class="price-row"><i class="icon-drawar"></i> سبيسر + 3 رومات </div>
+                                                    <div class="price-row"><i class="icon-refresh"></i> لا يتم أعفائك من قوانين السيرفر</div>
+                                                    <div class="price-row">
+                                                      <form method="post">  <button type="submit" name="vsliver" class="btn btn-success waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box">
+                                            <div class="pricing-body b-r">
+                                                <div class="pricing-header">
+                                                    <h4 class="text-center">VIP GOLD</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>7.99</h2>
+													<hr>
+                                                    <p class="uppercase">لمده شهر</p>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row"><i class="icon-user"></i> تخطي الباس + الماكس تشانل </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تخطي الاسبام + تشانل كومندر </div>
+                                                    <div class="price-row"> اماكنية اتصالك بنفس الايدتني مرتين </div>
+                                                    <div class="price-row"><i class="icon-user"></i> تلك بور فوق الاعضاء </div>
+                                                    <div class="price-row"><i class="icon-user"></i> يمكنك سحب الاعضاء  </div>
+                                                    <div class="price-row"><i class="icon-screen-smartphone"></i> لمنطقه الملكيه فاللوحه</div>
+                                                    <div class="price-row"><i class="icon-drawar"></i> سبسير + 4 رومات</div>
+                                                    <div class="price-row"><i class="icon-refresh"></i> لا يتم أعفائك من قوانين السيرفر </div>
+                                                    <div class="price-row">
+                                                       <form method="post"> <button type="submit" name="vgold" class="btn btn-success waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <!--   <div class="col-md-2 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box">
+                                            <div class="pricing-body b-r">
+                                                <div class="pricing-header">
+                                                    <h4 class="text-center">Coins</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>1.99</h2>
+													<hr>
+                                                    <p class="uppercase">1000 ∞ Coins</p>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">∞</div>
+                                                    <div class="price-row">∞</div>
+                                                    <div class="price-row">∞ </div>
+                                                    <div class="price-row">
+                                                        <form method="post"> <button type="submit" name="vcoin" class="btn btn-success waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+									 
+  <!-- 
+                                    <div class="col-md-3 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box featured-plan">
+                                            <div class="pricing-body">
+                                                <div class="pricing-header">
+                                                    <h4 class="price-lable text-white bg-warning"> العرض الذهبي</h4>
+                                                    <h4 class="text-center">Vip ~ Prime</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>19.99</h2>
+													<hr>
+                                                    <h3 class="uppercase"> للابد </h3>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row"><h3 class="uppercase"> 1000 كوينز  </h3></div>
+                                                    <div class="price-row"><h3 class="uppercase">  لمنطقه الملكيه فاللوحه  </h3></div>
+                                                    <div class="price-row"><h3 class="uppercase">  سبيسر + رومين </h3></div>
+                                                    <div class="price-row"><h3 class="uppercase"> رتبة باسمك  </h3></div>
+                                                    <div class="price-row">
+                                                       <form method="post"> <button type="submit" name="vprime" class="btn btn-lg btn-info waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>		     
+-->
+									
+									   <div class="col-md-2 col-xs-6 col-sm-6 no-padding">
+                                        <div class="pricing-box">
+                                            <div class="pricing-body b-r">
+                                                <div class="pricing-header">
+                                                    <h4 class="text-center">Vip ~ Prime</h4>
+                                                    <h2 class="text-center"><span class="price-sign">$</span>19.99</h2>
+													<hr>
+                                                    <p class="uppercase">للابد</p>
+                                                </div>
+                                                <div class="price-table-content">
+                                                    <div class="price-row"> 1000 كوينز  </div>
+                                                    <div class="price-row">  لمنطقه الملكيه فاللوحه  </div>
+                                                    <div class="price-row">  سبيسر + رومين </div>
+                                                    <div class="price-row"> رتبة باسمك  </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row"> ~  </div>
+                                                    <div class="price-row">
+                                                       <form method="post"> <button type="submit" name="vprime" class="btn btn-success waves-effect waves-light m-t-20">شراء</button> </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			
+        </div>
+        </div>
+		
+<?php require_once('includes/footer.php'); ?>
