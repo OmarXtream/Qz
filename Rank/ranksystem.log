@@ -1,0 +1,46 @@
+2019-03-06 09:45:27.931443   INFO      ###################################################################
+2019-03-06 09:45:27.932046   INFO      
+2019-03-06 09:45:27.932095   INFO      ###################################################################
+2019-03-06 09:45:27.932136   INFO      Initialize Bot...
+2019-03-06 09:45:27.940154   DEBUG     Running on OS: Linux 3.16.0-4-amd64
+2019-03-06 09:45:27.940206   DEBUG     Using PHP Version: 5.6.36-0+deb8u1
+2019-03-06 09:45:27.940237   DEBUG     Database Version: 5.5.60-0+deb8u1
+2019-03-06 09:45:27.940264   INFO      Check Ranksystem database for updates...
+2019-03-06 09:45:27.940291   INFO        No newer version detected; Database check finished.
+2019-03-06 09:45:27.940977   NOTICE    Unnecessary folder, please delete it from your webserver: icons/
+2019-03-06 09:45:27.941753   ERROR     Write-out permissions on folder "logs" are missing. Please assign full rights (Linux: chmod 777; Windows: 'full access') and try to start the Ranksystem again.
+2019-03-06 09:45:27.941789   INFO        Check files permissions...
+2019-03-06 09:45:28.010023   INFO        Check files permissions [done]
+2019-03-06 09:45:28.010086   INFO      Check Ranksystem database for updates [done]
+2019-03-06 09:45:28.010116   INFO      Check Ranksystem files for updates...
+2019-03-06 09:45:28.010144   INFO      Check Ranksystem files for updates [done]
+2019-03-06 09:45:28.010167   INFO      Ranksystem Version: 1.2.12
+2019-03-06 09:45:28.010189   INFO      Loading addons...
+2019-03-06 09:45:28.010801   INFO        Addon: 'assign_groups' [OFF]
+2019-03-06 09:45:28.010835   INFO      Loading addons [done]
+2019-03-06 09:45:28.010877   INFO      Connect to TS3 Server (Address: "" Voice-Port: "" Query-Port: "" SSH: "").
+2019-03-06 09:45:28.016940   ERROR     TS3 Error: 0: Failed to parse address ":"
+2019-03-06 09:45:28.017131   CRITICAL  Critical TS3 error on core function! Shutting down!
+2019-03-06 09:46:00.049331   INFO      ###################################################################
+2019-03-06 09:46:00.049436   INFO      
+2019-03-06 09:46:00.049472   INFO      ###################################################################
+2019-03-06 09:46:00.049507   INFO      Initialize Bot...
+2019-03-06 09:46:00.052891   DEBUG     Running on OS: Linux 3.16.0-4-amd64
+2019-03-06 09:46:00.052938   DEBUG     Using PHP Version: 5.6.36-0+deb8u1
+2019-03-06 09:46:00.052996   DEBUG     Database Version: 5.5.60-0+deb8u1
+2019-03-06 09:46:00.053040   INFO      Check Ranksystem database for updates...
+2019-03-06 09:46:00.053083   INFO        No newer version detected; Database check finished.
+2019-03-06 09:46:00.053275   NOTICE    Unnecessary folder, please delete it from your webserver: icons/
+2019-03-06 09:46:00.053324   ERROR     Write-out permissions on folder "logs" are missing. Please assign full rights (Linux: chmod 777; Windows: 'full access') and try to start the Ranksystem again.
+2019-03-06 09:46:00.053356   INFO        Check files permissions...
+2019-03-06 09:46:00.077999   INFO        Check files permissions [done]
+2019-03-06 09:46:00.078058   INFO      Check Ranksystem database for updates [done]
+2019-03-06 09:46:00.078092   INFO      Check Ranksystem files for updates...
+2019-03-06 09:46:00.078129   INFO      Check Ranksystem files for updates [done]
+2019-03-06 09:46:00.078153   INFO      Ranksystem Version: 1.2.12
+2019-03-06 09:46:00.078176   INFO      Loading addons...
+2019-03-06 09:46:00.078328   INFO        Addon: 'assign_groups' [OFF]
+2019-03-06 09:46:00.078358   INFO      Loading addons [done]
+2019-03-06 09:46:00.078392   INFO      Connect to TS3 Server (Address: "" Voice-Port: "" Query-Port: "" SSH: "").
+2019-03-06 09:46:00.080482   ERROR     TS3 Error: 0: Failed to parse address ":"
+2019-03-06 09:46:00.080557   CRITICAL  Critical TS3 error on core function! Shutting down!

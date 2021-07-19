@@ -1,0 +1,1 @@
+<meta HTTP-EQUIV='REFRESH' content='1; url=https://panel.q-z.us/'/>

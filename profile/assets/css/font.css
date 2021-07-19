@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Sukar Regular";
+    src: url('../fontsfont/Sukar-Regular.eot');
+    src: url('../fontsfont/Sukar-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fontsfont/Sukar-Regular.svg#Sukar-Regular') format('svg'),
+    url('../fontsfont/Sukar-Regular.woff') format('woff'),
+    url('../fonts/Sukar-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+div h1, div h2, div h3, div h4, div h6, div p, div align, div.h1, div.h2, div.h3 ,div.h3 ,div.h6, div.align div.a div.li div.i {
+   font-family: 'Open Sans', Sukar Regular;
+
+}
+div a , div.a {
+   font-family: 'Open Sans', Sukar Regular;
+
+}
+div {
+    font-family: Sukar Regular,'Open Sans';
+}
+button {
+    font-family: Sukar Regular,'Open Sans' !important;
+}
+font1 {
+    font-family: Sukar Regular,'Open Sans' !important;
+}
+font2 {
+    font-family: Sukar Regular,'Open Sans' !important ;
+}
+
+.qz {
+   font-family: Sukar Regular !important;
+   font-weight: bold !important;
+}
